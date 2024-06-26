@@ -50,6 +50,18 @@ a{
         }
     }
 
+    .form-error-container{
+        width: 100%;
+        margin: 0.7rem 0 0 0;
+        .form-error-text{
+            display: flex;
+            justify-content: flex-start;
+            align-items: start;
+            font-size: 14px;
+            color: #fb4141;
+        }
+    }
+
     .form-info-container {
         width: 100%;
         display: flex;

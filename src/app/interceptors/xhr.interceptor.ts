@@ -2,23 +2,20 @@ import { HttpErrorResponse, HttpHeaders, HttpInterceptorFn } from '@angular/comm
 import { tap } from 'rxjs';
 
 export const xhrInterceptor: HttpInterceptorFn = (req, next) => {
-  let httpHeaders = new HttpHeaders();
-  // if(sessionStorage.getItem('user')){
-  //   user = JSON.parse(sessionStorage.getItem('user')!);
-  // }
-  // if(user && user.password && user.username){
-  //   httpHeaders = httpHeaders.append('Authorization', 'Basic ' + window.btoa(user.email + ':' + user.password));
-  // }else {
-  //   let authorization = sessionStorage.getItem('Authorization');
-  //   if(authorization){
-  //     httpHeaders = httpHeaders.append('Authorization', authorization); 
-  //   }
-  // }
-  // const xhr = req.clone({
-  //   headers: httpHeaders
-  // });
-  // console.log(xhr);
-  return next(req).pipe(tap(
+  let httpHeaders = req.headers;
+  let authorization = sessionStorage.getItem('AUTH-TOKEN');
+  if(authorization){
+    httpHeaders = httpHeaders.append('Authorization', authorization); 
+  }
+  let xsrf = sessionStorage.getItem('XSRF-TOKEN');
+  if(xsrf){
+    httpHeaders = httpHeaders.append('X-XSRF-TOKEN', xsrf);  
+  }
+  httpHeaders = httpHeaders.append('X-Requested-With', 'XMLHttpRequest');
+  const xhr = req.clone({
+    headers: httpHeaders
+  })
+  return next(xhr).pipe(tap(
     (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status !== 401) {

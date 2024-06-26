@@ -1,0 +1,18 @@
+<h1>Machine Manager</h1>
+
+<table>
+    <tbody>
+        @for(machine of machines; track machine){
+            <tr>
+                <td>{{machine.id}}</td>
+                <td>{{machine.serialNumber}}</td>
+                <td><button>View</button></td>
+                @if(user.role === "ROLE_ADMIN"){
+                    <td><button>Edit</button></td>
+                    <td><button (click)="deleteMachine(machine.id)">Delete</button></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="action-btn" (click)="logout()">LOGOUT</button>

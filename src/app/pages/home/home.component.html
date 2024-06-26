@@ -1,4 +1,51 @@
-<app-header></app-header>
-<p>home works!</p>
-<app-footer></app-footer>
-<button (click)="logout()">Logout</button>
+
+<main>
+    <section class="user-section">
+        <div class="user">
+            <div class="profile">
+                <div class="profile-imp">{{user.firstName.charAt(0).toUpperCase() +" " + user.lastName.charAt(0).toUpperCase()}}</div>
+                <div class="profile-info">
+                    <p class="name">{{user.firstName + " " + user.lastName}}</p>
+                    <p class="username">{{"@" + user.username}}</p>
+                </div>
+            </div>
+            <div class="profile-action">
+                <button class="action-btn">EDIT</button>
+                <button class="action-btn" (click)="logout()">LOGOUT</button>
+            </div>
+        </div>
+    </section>
+    <section class="chat-section">
+
+    </section>
+    <section class="friend-section">
+        <div>
+            <form [formGroup]="searchUserForm" (ngSubmit)="onSearch()">
+                <input type="text" placeholder="Enter username to add friend" formControlName="username"/>
+                <button type="submit" [disabled]="searchUserForm.invalid">Search</button>
+            </form>
+        </div>
+        <div>
+            @for (user of searchUsers; track user) {
+                <div class="user">
+                    <div class="profile">
+                        <div class="profile-imp">{{user.firstName.charAt(0).toUpperCase() +" " + user.lastName.charAt(0).toUpperCase()}}</div>
+                        <div class="profile-info">
+                            <p class="name">{{user.firstName + " " + user.lastName}}</p>
+                            <p class="username">{{"@" + user.username}}</p>
+                        </div>
+                    </div>
+                    <div class="profile-action">
+                        <button (click)="startChat()" class="action-btn">CHAT</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+<!-- <button >Logout</button>
+<form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+    <input type="password" placeholder="Enter new password" formControlName="password">
+    <button type="submit" [disabled]="changePasswordForm.invalid">Change Password</button>
+</form> -->

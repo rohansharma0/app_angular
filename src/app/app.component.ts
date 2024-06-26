@@ -1,12 +1,12 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsModule],
+  imports: [RouterOutlet , AuthModule , AdminModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

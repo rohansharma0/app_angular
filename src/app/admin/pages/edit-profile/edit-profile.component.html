@@ -1,0 +1,8 @@
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()" style="display: flex;flex-direction: column; justify-content: center; align-items: center;">
+    <label>First Name <input type="text" formControlName="firstName"/></label>
+    <label>Last Name <input type="text" formControlName="lastName"/></label>
+    <label>Email <input type="email" formControlName="email"/></label>
+    <label>Username <input type="text" formControlName="username"/></label>
+
+    <button type="submit" [disabled]="updateForm.invalid">Update</button>
+</form>

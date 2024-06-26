@@ -20,21 +20,24 @@
         formControlName="password"
         class="form-input"
     />
-    <div class="form-info-container">
-        <!-- <div class="form-info-radio-container">
+    <div class="form-error-container">
+        <p class="form-error-text">{{errorMessage}}</p>
+    </div>
+    <!-- <div class="form-info-container">
+        <div class="form-info-radio-container">
             <input type="radio" class="form-info-radio" />
             <p class="form-info-text">Keep me signed in</p>
-        </div> -->
-        <!-- <a [routerLink]="['/forget']" class="form-reset-link">
+        </div>
+        <a [routerLink]="['/forget']" class="form-reset-link">
             Forgot password?
-        </a> -->
-    </div>
+        </a>
+    </div> -->
     <button class="form-btn" [disabled]="loginForm.invalid" type="submit">
         Sign in
     </button>
     <div class="form-footer-container">
         <p class="form-footer-text">Not a member yet?</p>
-        <a [routerLink]="['/register']" class="form-footer-link">
+        <a [routerLink]="['/auth/register']" class="form-footer-link">
             Sign up
         </a>
     </div>

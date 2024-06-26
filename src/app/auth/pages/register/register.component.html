@@ -43,6 +43,9 @@
         formControlName="password"
         class="form-input"
     />
+    <div class="form-error-container">
+        <p class="form-error-text">{{errorMessage}}</p>
+    </div>
     <!-- <div class="form-info-container">
         <div class="form-info-radio-container">
             <input type="radio" Name="form-info-radio" />
@@ -60,10 +63,10 @@
         <p class="form-footer-text">
             Are you already a member?
         </p>
-        <button [routerLink]="['/login']"
+        <a [routerLink]="['/auth/login']"
             class="form-footer-link"
         >
             Sign in
-        </button>
+    </a>
     </div>
 </form>

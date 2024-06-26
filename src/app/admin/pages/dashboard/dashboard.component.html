@@ -1,0 +1,16 @@
+<p>dashboard works!</p>
+
+<ul>
+    @for (user of users; track user){
+        <li>
+            <div style="display: flex;flex-direction: row; gap: 1rem;">
+                <p>{{user?.username}}</p>
+                <a [routerLink]="['/admin/profile/', user?.username]"
+                routerLinkActive="router-link-active">EDIT</a>
+
+                <button (click)="updateRole(user)">{{user?.role === "ADMIN"? "Make USER" : "Make ADMIN"}}</button>
+            </div>
+        </li>
+    }
+   
+</ul>

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [RouterLink,ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -38,8 +36,9 @@ export class RegisterComponent {
     ])
   })
 
+  errorMessage !: string;
+
   onSubmit() {
-    console.log(this.registerForm);
     if(this.registerForm.valid){
       this.authService.register(this.registerForm).subscribe((res) => {
         this.router.navigate(['']);
